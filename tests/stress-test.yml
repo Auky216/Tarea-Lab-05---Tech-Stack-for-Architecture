@@ -1,0 +1,73 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    # Warm up phase
+    - duration: 30
+      arrivalRate: 5
+      name: "Warm up"
+    
+    # Ramp up phase
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 50
+      name: "Ramp up load"
+    
+    # Sustained load
+    - duration: 120
+      arrivalRate: 50
+      name: "Sustained load"
+    
+    # Spike test
+    - duration: 30
+      arrivalRate: 100
+      name: "Spike test"
+    
+    # Cool down
+    - duration: 30
+      arrivalRate: 10
+      name: "Cool down"
+  
+  payload:
+    path: "test-data.csv"
+    fields:
+      - ticketId
+      - customerName
+      - customerEmail
+
+scenarios:
+  - name: "Get tickets"
+    weight: 50
+    flow:
+      - get:
+          url: "/api/tickets"
+          expect:
+            - statusCode: 200
+            - contentType: json
+  
+  - name: "Create order"
+    weight: 30
+    flow:
+      - post:
+          url: "/api/orders"
+          json:
+            ticketId: "{{ $randomNumber(1, 5) }}"
+            customerName: "{{ $randomString() }}"
+            customerEmail: "user{{ $randomNumber(1, 10000) }}@test.com"
+          expect:
+            - statusCode: [201, 409]  # Success or conflict
+  
+  - name: "Get orders"
+    weight: 10
+    flow:
+      - get:
+          url: "/api/orders"
+          expect:
+            - statusCode: 200
+  
+  - name: "Get report"
+    weight: 10
+    flow:
+      - get:
+          url: "/api/report"
+          expect:
+            - statusCode: 200
