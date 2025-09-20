@@ -1,5 +1,9 @@
 # 🎟️ Sistema de Venta de Tickets - POC con Load Balancing
 
+## Integrantes
+-  Adrian Antonio Auqui Perez
+- Jose Barrenchea Merino
+
 ## 📌 Descripción del Proyecto
 Proof of Concept (POC) de un sistema distribuido de venta de tickets que implementa **load balancing**, **caching** y **microservicios**, con el objetivo de demostrar la elección de tecnologías adecuadas bajo un **presupuesto limitado**.
 
@@ -244,8 +248,4 @@ powershell -ExecutionPolicy Bypass -File tests/load-balancing-test.ps1 -requests
 
 ---
 
-## 📅 Información
-- **Autor:** [Tu nombre]  
-- **Fecha:** 19 Septiembre 2025  
-- **Curso:** Arquitectura de Software  
-- **Institución:** [Tu universidad]  
+
