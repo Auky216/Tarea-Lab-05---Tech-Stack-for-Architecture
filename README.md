@@ -7,6 +7,8 @@
 ## 📌 Descripción del Proyecto
 Proof of Concept (POC) de un sistema distribuido de venta de tickets que implementa **load balancing**, **caching** y **microservicios**, con el objetivo de demostrar la elección de tecnologías adecuadas bajo un **presupuesto limitado**.
 
+Este repositorio es una demostración académica; no debe usarse para ventas reales sin resolver la concurrencia y la persistencia de transacciones.
+
 ---
 
 ## 🧠 Decisión Arquitectónica Fundamental
@@ -81,6 +83,8 @@ Load Balancer (Round Robin)
 ---
 
 ## 📊 Resultados de Testing
+
+Las cifras siguientes provienen de las pruebas originales del POC. No son garantías de rendimiento en otros equipos ni en producción.
 
 ### Test 1: Load Balancing
 - Configuración: 100 requests concurrentes  
@@ -160,7 +164,7 @@ Load Balancer (Round Robin)
 ### Instalación
 ```bash
 # Clonar repositorio
-git clone [URL]
+git clone https://github.com/Auky216/Tarea-Lab-05---Tech-Stack-for-Architecture.git
 cd Tarea-Lab-05---Tech-Stack-for-Architecture
 
 # Instalar dependencias
